@@ -2,6 +2,7 @@ package ru.job4j.chess;
 
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+
 import java.util.Arrays;
 
 public final class Logic {
@@ -21,13 +22,12 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (Figure figure: figures) {
-            if (figure == null) {
-                continue;
-            }
-            for (Cell cell: steps) {
-                if (figure.position() == cell) {
-                    throw new OccupiedCellException("Unable to move through the figure on " + cell);
+        for (Figure figure : figures) {
+            if (figure != null) {
+                for (Cell cell : steps) {
+                    if (figure.position().equals(cell)) {
+                        throw new OccupiedCellException("Unable to move through the figure on " + cell);
+                    }
                 }
             }
         }
